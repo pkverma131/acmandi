@@ -1,7 +1,14 @@
 from django.contrib import admin
 
 from .models import Product, ProductHighlight, ProductMedia, ProductLink, \
-    Specification, SpecificationType, Brand
+    Specification, SpecificationType, Brand, MarketPlace, PerHourEnergyConsumed
+
+
+class BrandAdmin(admin.ModelAdmin):
+    list_display = ('name', 'code', 'company', 'origin_country',
+                    'manufacture_country', 'support_contact', 'support_email', 'address')
+    fields = ('name', 'code', 'company', 'origin_country',
+              'manufacture_country', 'support_contact', 'support_email', 'address')
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -9,10 +16,47 @@ class ProductAdmin(admin.ModelAdmin):
     fields = ('brand', 'title', 'description')
 
 
-admin.site.register(Brand)
+class ProductHighlightAdmin(admin.ModelAdmin):
+    list_display = ('highlight', 'type')
+    fields = ('highlight', 'type')
+
+
+class ProductMediaAdmin(admin.ModelAdmin):
+    list_display = ('is_thumbnail', 'media_file')
+    fields = ('is_thumbnail', 'media_file')
+
+
+class ProductLinkAdmin(admin.ModelAdmin):
+    list_display = ('product', 'marketplace', 'link', 'mrp', 'discount', 'sales_price')
+    fields = ('product', 'marketplace', 'link', 'mrp', 'discount', 'sales_price')
+
+
+class SpecificationTypeAdmin(admin.ModelAdmin):
+    list_display = ('type', 'description')
+    fields = ('type', 'description')
+
+
+class SpecificationAdmin(admin.ModelAdmin):
+    list_display = ('specification_type', 'label', 'value')
+    fields = ('specification_type', 'label', 'value')
+
+
+class MarketPlaceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'logo', 'website')
+    fields = ('name', 'logo', 'website')
+
+
+class PerHourEnergyConsumedAdmin(admin.ModelAdmin):
+    list_display = ('product', 'unit_consumed')
+    fields = ('product', 'unit_consumed')
+
+
+admin.site.register(Brand, BrandAdmin)
 admin.site.register(Product, ProductAdmin)
-admin.site.register(ProductHighlight)
-admin.site.register(ProductMedia)
-admin.site.register(ProductLink)
-admin.site.register(SpecificationType)
-admin.site.register(Specification)
+admin.site.register(ProductHighlight, ProductHighlightAdmin)
+admin.site.register(ProductMedia, ProductMediaAdmin)
+admin.site.register(ProductLink, ProductLinkAdmin)
+admin.site.register(SpecificationType, SpecificationTypeAdmin)
+admin.site.register(Specification, SpecificationAdmin)
+admin.site.register(MarketPlace, MarketPlaceAdmin)
+admin.site.register(PerHourEnergyConsumed, PerHourEnergyConsumedAdmin)

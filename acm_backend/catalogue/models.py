@@ -12,7 +12,7 @@ class BaseTimestampedModel(models.Model):
 
 class BaseUserTrackedModel(models.Model):
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
-                                   related_name='created_by_%(class)s_related')
+                                   default=1, related_name='created_by_%(class)s_related')
     updated_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
                                    related_name='updated_by_%(class)s_related', null=True, blank=True)
 
