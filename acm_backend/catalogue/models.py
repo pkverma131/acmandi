@@ -41,6 +41,7 @@ class Product(AuditModelMixin):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
+    thumbnail = models.ImageField()
 
 
 class ProductMedia(AuditModelMixin):
