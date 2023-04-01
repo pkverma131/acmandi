@@ -12,8 +12,8 @@ class BrandAdmin(admin.ModelAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('brand', 'title', 'description')
-    fields = ('brand', 'title', 'description')
+    list_display = ('brand', 'title', 'description', 'thumbnail')
+    fields = ('brand', 'title', 'description', 'thumbnail')
 
 
 class ProductHighlightAdmin(admin.ModelAdmin):
@@ -22,8 +22,8 @@ class ProductHighlightAdmin(admin.ModelAdmin):
 
 
 class ProductMediaAdmin(admin.ModelAdmin):
-    list_display = ('is_thumbnail', 'media_file')
-    fields = ('is_thumbnail', 'media_file')
+    list_display = ('product', 'is_thumbnail', 'media_file')
+    fields = ('product', 'is_thumbnail', 'media_file')
 
 
 class ProductLinkAdmin(admin.ModelAdmin):
