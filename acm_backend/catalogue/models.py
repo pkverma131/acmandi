@@ -78,7 +78,7 @@ class ProductToSpecification(models.Model):
 
 class MarketPlace(AuditModelMixin):
     name = models.CharField(max_length=50)
-    logo = models.ImageField()
+    logo = models.ImageField(upload_to='marketplaces/logo/')
     website = models.CharField(max_length=100)
 
 
