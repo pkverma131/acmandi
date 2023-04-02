@@ -5,6 +5,13 @@
 	<div class="banner">
 		<img class="site-banner" src="{%static 'media/home_page_banner.avif' %}" alt="">
 	</div>
+	<div>
+		<ul>
+			{% for tile in tiles %}
+				<li>{{ tile }}</li>
+			{% endfor %}
+		</ul>
+	</div>
   	<h2>Top 10 ACs in India</h2>
   	<p>Based on consumer reviews, brand reputation, and specifications, here are the top 10 air conditioners in India:</p>
   	<ul>
