@@ -27,6 +27,7 @@ class AuditModelMixin(BaseTimestampedModel, BaseUserTrackedModel):
 
 
 class Brand(AuditModelMixin):
+    logo = models.ImageField(upload_to='brands/logo/', default=None)
     name = models.CharField(max_length=50)
     code = models.CharField(max_length=50)
     company = models.CharField(max_length=100)
@@ -41,13 +42,13 @@ class Product(AuditModelMixin):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
-    thumbnail = models.ImageField(default=None)
+    thumbnail = models.ImageField(upload_to='products/thumbnail/', default=None)
 
 
 class ProductMedia(AuditModelMixin):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     is_thumbnail = models.BooleanField()
-    media_file = models.FileField()
+    media_file = models.ImageField(upload_to='products/image/', default=None)
 
 
 class SpecificationType(AuditModelMixin):
