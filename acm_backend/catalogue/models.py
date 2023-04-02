@@ -100,7 +100,7 @@ class PerHourEnergyConsumed(models.Model):
 class ProductCategory(AuditModelMixin):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    thumbnail = models.ImageField(upload_to='product_category/thumbnail/')
+    thumbnail = models.ImageField(upload_to='product_category/thumbnail/', default=None)
 
 
 class ProductToProductCategory(models.Model):

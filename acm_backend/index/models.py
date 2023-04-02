@@ -19,7 +19,7 @@ class Tile(AuditModelMixin):
     tile_category = models.ForeignKey(TileCategory, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
-    thumbnail = models.ImageField(upload_to='tiles/thumbnail/')
+    thumbnail = models.ImageField(upload_to='tiles/thumbnail/', default=None)
 
     def filter(self):
         return TileToTileFilter.objects.filter(tile=self.id).values()
