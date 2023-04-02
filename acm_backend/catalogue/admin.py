@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .models import Product, ProductHighlight, ProductMedia, ProductLink, \
-    Specification, SpecificationType, Brand, MarketPlace, PerHourEnergyConsumed
+    Specification, SpecificationType, Brand, MarketPlace, PerHourEnergyConsumed,\
+    ProductCategory, ProductToProductCategory
 
 
 class BrandAdmin(admin.ModelAdmin):
@@ -51,6 +52,16 @@ class PerHourEnergyConsumedAdmin(admin.ModelAdmin):
     fields = ('product', 'unit_consumed')
 
 
+class ProductCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'thumbnail')
+    fields = ('name', 'description', 'thumbnail')
+
+
+class ProductToProductCategoryAdmin(admin.ModelAdmin):
+    list_display = ('product', 'product_category')
+    fields = ('product','product_category')
+
+
 admin.site.register(Brand, BrandAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductHighlight, ProductHighlightAdmin)
@@ -60,3 +71,5 @@ admin.site.register(SpecificationType, SpecificationTypeAdmin)
 admin.site.register(Specification, SpecificationAdmin)
 admin.site.register(MarketPlace, MarketPlaceAdmin)
 admin.site.register(PerHourEnergyConsumed, PerHourEnergyConsumedAdmin)
+admin.site.register(ProductCategory, ProductCategoryAdmin)
+admin.site.register(ProductToProductCategory, ProductToProductCategoryAdmin)
