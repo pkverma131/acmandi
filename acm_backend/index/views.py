@@ -15,7 +15,6 @@ def index(request):
 
     queryset = TileCategory.objects.all()
     serializer_class = TileSerializer(queryset, many=True)
-    serialized_data = {'data': serializer_class.data}
 
     context = {
         'products': ['Daikin 1.5 Ton 5 Star Inverter Split AC - FTKG50TV',
@@ -28,6 +27,6 @@ def index(request):
                      'Godrej 1.5 Ton 5 Star Inverter Split AC - GIC 18HTC5-WTA',
                      'Whirlpool 1.5 Ton 5 Star Inverter Split AC - 3D Cool Elite Pro',
                      'Mitsubishi Heavy Duty 1.5 Ton 5 Star Inverter Split AC - SRK20CSS-S6'],
-        'tiles': serialized_data
+        'tiles': serializer_class.data
     }
     return HttpResponse(template.render(context, request))
