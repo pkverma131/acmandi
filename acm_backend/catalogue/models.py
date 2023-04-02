@@ -97,3 +97,13 @@ class PerHourEnergyConsumed(models.Model):
     unit_consumed = models.FloatField()
 
 
+class ProductCategory(AuditModelMixin):
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
+    media = models.ImageField(upload_to='product_category/images/')
+
+
+class ProductToProductCategory(models):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product_category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
+
