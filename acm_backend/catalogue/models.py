@@ -103,7 +103,7 @@ class ProductCategory(AuditModelMixin):
     media = models.ImageField(upload_to='product_category/images/')
 
 
-class ProductToProductCategory(models):
+class ProductToProductCategory(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     product_category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
 
