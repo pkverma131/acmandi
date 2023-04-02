@@ -18,7 +18,7 @@ class TileCategory(AuditModelMixin):
         return self.name
 
     def tile(self):
-        return Tile.objects.filter(tile_category=self.id).values()
+        return Tile.objects.filter(tile_category=self.id).values('name', 'description', 'thumbnail', 'filter')
 
 
 class Tile(AuditModelMixin):
@@ -31,7 +31,7 @@ class Tile(AuditModelMixin):
         return self.name
 
     def filter(self):
-        return TileToTileFilter.objects.filter(tile=self.id).values()
+        return TileToTileFilter.objects.filter(tile=self.id).values('tile_filter')
 
 
 class TileToTileFilter(models.Model):
