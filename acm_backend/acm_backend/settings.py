@@ -115,5 +115,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT = '/var/www/acmandi/static/'
 
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = '/var/www/acmandi/media/'
+
 
 
