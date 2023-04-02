@@ -1,5 +1,6 @@
 from django.db import models
 from catalogue.models import AuditModelMixin
+from django.db.models import F
 
 
 class TileFilter(AuditModelMixin):
@@ -18,7 +19,8 @@ class TileCategory(AuditModelMixin):
         return self.name
 
     def tile(self):
-        return Tile.objects.filter(tile_category=self.id).values('name', 'description', 'thumbnail', 'filter')
+        return Tile.objects.filter(tile_category=self.id).values('name', 'description', 'thumbnail',
+                                                                 'tiletotilefilter__tile_filter')
 
 
 class Tile(AuditModelMixin):
