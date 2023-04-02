@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalogue.apps.CatalogueConfig',
     'data_loader.apps.DataLoaderConfig',
+    'index.apps.IndexConfig',
     'rest_framework',
 ]
 

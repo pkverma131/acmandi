@@ -25,6 +25,6 @@ class Tile(AuditModelMixin):
         return TileToTileFilter.objects.filter(tile=self.id).values()
 
 
-class TileToTileFilter(AuditModelMixin):
+class TileToTileFilter(models.Model):
     tile = models.ForeignKey(Tile, on_delete=models.CASCADE)
     tile_filter = models.ForeignKey(TileFilter, on_delete=models.CASCADE)
