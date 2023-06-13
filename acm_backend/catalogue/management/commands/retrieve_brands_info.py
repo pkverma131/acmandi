@@ -9,13 +9,14 @@ PROJECT_BASE_LOCATION = str(settings.BASE_DIR.parent.absolute())
 
 def get_brands(file_path, file_names:str)->list:
     brands = []
-    for file_name  in file_names:
+    for file_name in file_names:
                 file_obj = open(f"{file_path}/{file_name}")
                 product_data = json.load(file_obj)
                 # print(product_data)
                 brand_name = product_data['specifications'][6]['specification_value']
-                brands.append(brand_name)
+                brands.append(brand_name) if brand_name not in brands else brands
                 file_obj.close()
+    return brands
 
 
 class Command(BaseCommand):
@@ -26,7 +27,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for product_file_path in options["product_file_paths"]:
-            file_path = os.path.join(PROJECT_BASE_LOCATION,product_file_path)
+            file_path = os.path.join(PROJECT_BASE_LOCATION, product_file_path)
+            print(file_path)
             file_names = os.listdir(file_path)
-            brands = get_brands(file_path,file_names)
+            print(file_names)
+            brands = get_brands(file_path, file_names)
             print(brands)
