@@ -137,4 +137,4 @@ dmypy.json
 **/static/*
 
 # product files
-data_loader/products/
+/data_loader/products/
