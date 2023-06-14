@@ -38,7 +38,7 @@
 }
 
 .category {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .tile-container {
@@ -47,4 +47,13 @@
 
 .tile {
   margin-right: 10px;
+  margin-bottom: 0px;
+}
+.tile-title {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.tile-description{
+  text-align: center;
 }
