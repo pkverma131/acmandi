@@ -1,4 +1,6 @@
 import React from 'react';
+import { Container,Row, Col } from 'react-bootstrap';
+
 import "./App.css";
 
 
@@ -28,7 +30,7 @@ const Category = ({ title, tiles }) => {
 };
 
 
-const HomePage = () => {
+const HomePageContent = () => {
   const categories = [
     {
       title: 'Size Up Your Room',
@@ -59,10 +61,33 @@ const HomePage = () => {
   );
 };
 
+
+const TopNavigation = () => {
+  return (
+    <nav className="top-navigation">
+      <ul className="menu-items">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">Explore</a></li>
+        <li><a href="/services">Calculate</a></li>
+        <li><a href="/contact">Blogs</a></li>
+      </ul>
+    </nav>
+  );
+};
+
 const App = () => {
   return (
     <div>
-      <HomePage />
+      <Container>
+      <TopNavigation></TopNavigation>
+      </Container>
+      <Container>
+        <Row>
+          <Col>
+          <HomePageContent/>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

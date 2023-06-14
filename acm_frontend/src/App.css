@@ -57,3 +57,39 @@
 .tile-description{
   text-align: center;
 }
+
+.top-navigation {
+  display: flex;
+  background-color: #f2f2f2;
+  padding: 10px;
+  float: right;
+  margin-bottom: 50px;
+  margin-right: 100px;
+}
+
+.menu-items {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.menu-items li {
+  margin-right: 10px;
+}
+
+.menu-items li:last-child {
+  margin-right: 0;
+}
+
+.menu-items li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px;
+}
+
+.menu-items li a:hover {
+  background-color: #ddd;
+}
+
