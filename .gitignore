@@ -138,3 +138,5 @@ dmypy.json
 
 # product files
 data_loader/products/
+
+**/node_modules/*
