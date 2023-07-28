@@ -33,9 +33,9 @@ class Brand(AuditModelMixin):
     company = models.CharField(max_length=100)
     origin_country = models.CharField(max_length=50)
     manufacture_country = models.CharField(max_length=50)
-    support_contact = models.CharField(max_length=50)
+    support_contact = models.CharField(max_length=100)
     support_email = models.CharField(max_length=100)
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=500)
 
     def __str__(self) -> str:
         return self.name
@@ -43,8 +43,10 @@ class Brand(AuditModelMixin):
 
 class Product(AuditModelMixin):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
+    # product category id to be part of this table
+    title = models.CharField(max_length=200)
+    description = models.CharField(max_length=500) # Trim this text
+    model_number = models.CharField(max_length=100, default=None)
     thumbnail = models.ImageField(upload_to='products/thumbnail/', default=None)
 
 
@@ -53,7 +55,7 @@ class ProductMedia(AuditModelMixin):
     is_thumbnail = models.BooleanField()
     media_file = models.ImageField(upload_to='products/image/', default=None)
 
-
+# TODO: Rename this to specification category example ac_type, room_size_specification, power_specification, 
 class SpecificationType(AuditModelMixin):
     type = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
@@ -61,12 +63,12 @@ class SpecificationType(AuditModelMixin):
 
 class Specification(AuditModelMixin):
     specification_type = models.ForeignKey(SpecificationType, on_delete=models.CASCADE)
-    label = models.CharField(max_length=50)
-    value = models.CharField(max_length=100)
+    label = models.CharField(max_length=100)
+    value = models.CharField(max_length=400)
 
 
 class ProductHighlight(AuditModelMixin):
-    highlight = models.CharField(max_length=50)
+    highlight = models.CharField(max_length=200)
     type = models.CharField(max_length=50, choices=(('1', 'TITLE_TAG'), ('2', 'FEATURE')))
 
 
@@ -95,10 +97,14 @@ class ProductLink(AuditModelMixin):
     sales_price = models.FloatField()
 
 
-class PerHourEnergyConsumed(models.Model):
+class ImportantSpecification(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    unit_consumed = models.FloatField()
+    wattage = models.IntegerField()
+    coverage_area = models.IntegerField()
+    energy_rating = models.FloatField()
+    default_bill_amount = models.IntegerField()
 
+# Create model product category examples , air conditioner, fridge, tv
 
 class ProductCategory(AuditModelMixin):
     name = models.CharField(max_length=50)

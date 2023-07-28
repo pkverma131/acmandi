@@ -27,6 +27,9 @@ SECRET_KEY = 'django-insecure-*9-nr9(j@9@-p7rg2es%+ge#yd635d2r-xr097tvi6le41m5bn
 DEBUG = True
 
 ALLOWED_HOSTS = ['13.235.67.46','www.acmandi.com','acmandi.com','localhost']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
 
 
 # Application definition
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'catalogue.apps.CatalogueConfig',
     'data_loader.apps.DataLoaderConfig',
     'index.apps.IndexConfig',
+    'blog.apps.BlogConfig',
+    'corsheaders',
     'rest_framework',
 ]
 
@@ -52,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'acm_backend.urls'

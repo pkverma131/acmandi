@@ -36,6 +36,17 @@ class ProductDetailsSpider(scrapy.Spider):
             print(counter)
 
     def parse(self, response):
+        # Extract the div element with id "overview_inner_container"
+        overview_div = response.xpath('//div[@id="overview_inner_container"]')
+
+        # Get the text content of all the paragraphs (p) within the div
+        paragraphs = overview_div.xpath('.//p//text()').extract()
+
+        # Join the paragraphs to form the complete text with new lines
+        overview_text = "\n".join(paragraphs).strip()
+
+        print(overview_text)
+
         specification_keys=response.xpath('//ul[@class="cp-specification-spec-info"]/li[@class="cp-specification-spec-title"]/h4')
         specification_values=response.xpath('//ul[@class="cp-specification-spec-info"]/li[@class="cp-specification-spec-details"]')
         specification_list_length = len(specification_keys)
@@ -61,7 +72,7 @@ class ProductDetailsSpider(scrapy.Spider):
 
         # print(key_features)
 
-        product_details= {'product_tile':product_title,'mrp':mrp,'product_price':product_price,
+        product_details= {'product_tile':product_title,'overview_text':overview_text,'mrp':mrp,'product_price':product_price,
                           'key_features':key_features,'specifications':specifications}
         
         #TODO: slash handler in filename/model

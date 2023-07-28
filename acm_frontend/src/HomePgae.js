@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-// import Navigation from './Navigation';
-// import Footer from './Footer';
+import Navigation from './Navigation';
+import Footer from './Footer';
 import SearchBox from './SearchBox';
 import BudgetTiles from './BudgetTiles';
+import RoomSizeTiles from './RoomSizeTiles';
 
 const HomePage = () => {
+  // eslint-disable-next-line
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const handleProductSelect = (product) => {
@@ -14,22 +16,30 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* <Navigation /> */}
+      <Navigation />
       <div className="container py-4">
-        <h2 className="text-center mb-5">Air Conditioner Product Search</h2>
-        <div className="row">
-          <div className="col-md-6">
+        <h2 className="text-center mb-5">Search Air Conditioner Products</h2>
+        <div className="row justify-content-center">
+          <div className="col-md-8">
             <SearchBox onSelect={handleProductSelect} />
           </div>
-          <div className="col-md-6">
+          </div>
+          <div className="row justify-content-center">
+          <div className="col-md-8">
             <div className="bg-white rounded p-4">
-              <h3 className="text-center mb-4">Monthly Bill Budget</h3>
               <BudgetTiles />
             </div>
           </div>
+          <div className="row justify-content-center">
+          <div className="col-md-8">
+            <div className="bg-white rounded p-4">
+              <RoomSizeTiles />
+            </div>
+          </div>
+        </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

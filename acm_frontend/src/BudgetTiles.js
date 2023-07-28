@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
-import SearchBox from './SearchBox';
-import BudgetTiles from './BudgetTiles';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
+const budgetValues = [1500, 2000, 2500, 3000];
 
-  const handleProductSelect = (product) => {
-    setSelectedProduct(product);
-    // Redirect to the product details page with pre-filled data
+const BudgetTiles = () => {
+  const navigate = useNavigate();
+
+  const handleTileClick = (budget) => {
+    // Handle tile click event, navigate to product listing page with the selected budget filter
+    navigate(`/catalogue/products/?max_default_bill_amount=${budget}`);
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="max-w-xl bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-bold mb-6">Air Conditioner Product Search</h2>
-        <div className="grid grid-cols-2 gap-6">
-          <div>
-            <SearchBox onSelect={handleProductSelect} />
-          </div>
-          <div>
-            <div className="bg-gray-200 rounded-lg p-4">
-              <h3 className="text-lg font-semibold mb-4">Monthly Bill Budget</h3>
-              <BudgetTiles />
+    <div>
+      <h3>Estimated Monthly Bill Budget (INR):</h3>
+      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+        {budgetValues.map((budget) => (
+          <div key={budget} className="col">
+            <div
+              className="card bg-light border-primary text-center p-3"
+              onClick={() => handleTileClick(budget)}
+              style={{ cursor: 'pointer' }}
+            >
+              {budget}
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default BudgetTiles;

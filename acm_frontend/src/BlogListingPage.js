@@ -1,23 +1,33 @@
-// BlogPage.js
-import React, { useEffect, useState } from 'react';
-import BlogCard from './BlogCard';
+import React, { useState, useEffect } from 'react';
+import Navigation from './Navigation';
+import Footer from './Footer';
+import BlogPostItem from './BlogPostItem'; // Import the new component
 
-function BlogPage() {
-  const [blogs, setBlogs] = useState([]);
+const BlogListingPage = () => {
+  const [blogPosts, setBlogPosts] = useState([]);
 
   useEffect(() => {
-    // Fetch blog posts
-    // Set the blog data in the state
+    // Fetch blog posts from the API
+    fetch('http://localhost:8000/blog/posts/')
+      .then((response) => response.json())
+      .then((data) => setBlogPosts(data))
+      .catch((error) => console.error('Error fetching blog posts:', error));
   }, []);
 
   return (
-    <div>
-      <h2>Blogs</h2>
-      {blogs.map((blog) => (
-        <BlogCard key={blog.id} blog={blog} />
-      ))}
+    <div className="blog-listing-page">
+      <Navigation />
+      <div className="container mt-4">
+        <h1>Blog Posts</h1>
+        <div className="blog-list">
+          {blogPosts.map((post) => (
+            <BlogPostItem key={post.id} post={post} />
+          ))}
+        </div>
+      </div>
+      <Footer />
     </div>
   );
-}
+};
 
-export default BlogPage;
+export default BlogListingPage;

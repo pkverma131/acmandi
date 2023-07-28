@@ -1,35 +1,70 @@
-from django.core.management.base import BaseCommand, CommandError
-from django.conf import settings
 import os
+from django.core.management.base import BaseCommand
 import json
-from pathlib import Path
-
-PROJECT_BASE_LOCATION = str(settings.BASE_DIR.parent.absolute())
-
-
-def get_brands(file_path, file_names:str)->list:
-    brands = []
-    for file_name in file_names:
-                file_obj = open(f"{file_path}/{file_name}")
-                product_data = json.load(file_obj)
-                # print(product_data)
-                brand_name = product_data['specifications'][6]['specification_value']
-                brands.append(brand_name) if brand_name not in brands else brands
-                file_obj.close()
-    return brands
-
 
 class Command(BaseCommand):
-    help = "Closes the specified poll for voting"
-
-    def add_arguments(self, parser):
-        parser.add_argument("product_file_paths", nargs="+", type=str)
+    help = 'Capture brand names and addresses from products directory JSON files'
 
     def handle(self, *args, **options):
-        for product_file_path in options["product_file_paths"]:
-            file_path = os.path.join(PROJECT_BASE_LOCATION, product_file_path)
-            print(file_path)
-            file_names = os.listdir(file_path)
-            print(file_names)
-            brands = get_brands(file_path, file_names)
-            print(brands)
+        products_directory = '/home/ubuntu/devwork/digital-properties/acmandi/data_loader/products'  # Replace with the actual path to your products directory
+        brand_data = []
+        for filename in os.listdir(products_directory):
+            if filename.endswith('.json'):
+                filepath = os.path.join(products_directory, filename)
+
+                with open(filepath, 'r') as file:
+                    data = json.load(file)
+                    brand_name = None
+                    manufacturer_address = None
+                    brand_support_number = None
+                    brand_support_email = None
+                    origin_country = None
+                    brand_country = None
+
+                    for spec in data.get('specifications', []):
+                        if spec['specification_key'] == 'Brand':
+                            brand_name = spec['specification_value']
+                        if spec['specification_key'] == 'Manufacturer/Importer/Marketer Name & Address':
+                            manufacturer_address = spec['specification_value']
+                        if spec['specification_key'] == 'Brand Support Number':
+                            brand_support_number = spec['specification_value']
+                        if spec['specification_key'] == 'Brand Support Email':
+                            brand_support_email = spec['specification_value']
+                        if spec['specification_key'] == 'Country of Manufacture':
+                            origin_country = spec['specification_value']
+                        if spec['specification_key'] == 'Country of Brand Origin':
+                            brand_country = spec['specification_value']
+
+                    brand_info = {
+                        'brand_name': brand_name,
+                        'manufacturer_address': manufacturer_address,
+                        'brand_support_number':brand_support_number,
+                        'brand_support_email':brand_support_email,
+                        'origin_country':origin_country,
+                        'brand_country':brand_country
+                    }
+
+                    brand_data.append(brand_info)
+        
+        # Create a set to keep track of unique brand names
+        unique_brands = set()
+
+        # Create a list to store unique brand data
+        unique_brand_data = []
+
+        for item in brand_data:
+            brand_name = item.get('brand_name')
+            
+            # Skip entries where brand_name is None or empty
+            if not brand_name:
+                continue
+
+            # If the brand name is not in the set, add it to the set and append the item to the unique_brand_data list
+            if brand_name not in unique_brands:
+                unique_brands.add(brand_name)
+                unique_brand_data.append(item)
+        # Save the brand data to a JSON file
+        with open('brand_data.json', 'w') as output_file:
+            json.dump(unique_brand_data, output_file, indent=2)
+
+        self.stdout.write(self.style.SUCCESS('Brand names and addresses captured and saved to brand_data.json'))
