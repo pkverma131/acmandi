@@ -20,11 +20,11 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('index.urls')),
-    path('api-auth/', include('rest_framework.urls')),
-    path('catalogue/', include('catalogue.urls')),
-    path('blog/', include('blog.urls'))
+    path('api/admin/', admin.site.urls),
+    path('api/', include('index.urls')),
+    path('api/api-auth/', include('rest_framework.urls')),
+    path('api/catalogue/', include('catalogue.urls')),
+    path('api/blog/', include('blog.urls'))
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
