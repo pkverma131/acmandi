@@ -1,0 +1,15 @@
+{
+  "main.css": "http://localhost:3000/public/media/tiles/static/css/main.0c226752.chunk.css",
+  "main.js": "http://localhost:3000/public/media/tiles/static/js/main.f682c8fc.chunk.js",
+  "main.js.map": "http://localhost:3000/public/media/tiles/static/js/main.f682c8fc.chunk.js.map",
+  "runtime~main.js": "http://localhost:3000/public/media/tiles/static/js/runtime~main.4b9cc936.js",
+  "runtime~main.js.map": "http://localhost:3000/public/media/tiles/static/js/runtime~main.4b9cc936.js.map",
+  "static/css/2.7a6fbdfd.chunk.css": "http://localhost:3000/public/media/tiles/static/css/2.7a6fbdfd.chunk.css",
+  "static/js/2.ce68e7c5.chunk.js": "http://localhost:3000/public/media/tiles/static/js/2.ce68e7c5.chunk.js",
+  "static/js/2.ce68e7c5.chunk.js.map": "http://localhost:3000/public/media/tiles/static/js/2.ce68e7c5.chunk.js.map",
+  "index.html": "http://localhost:3000/public/media/tiles/index.html",
+  "precache-manifest.85faa9434ab00590640abdbb2f364651.js": "http://localhost:3000/public/media/tiles/precache-manifest.85faa9434ab00590640abdbb2f364651.js",
+  "service-worker.js": "http://localhost:3000/public/media/tiles/service-worker.js",
+  "static/css/2.7a6fbdfd.chunk.css.map": "http://localhost:3000/public/media/tiles/static/css/2.7a6fbdfd.chunk.css.map",
+  "static/css/main.0c226752.chunk.css.map": "http://localhost:3000/public/media/tiles/static/css/main.0c226752.chunk.css.map"
+}
