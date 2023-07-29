@@ -20,7 +20,7 @@ const SearchBox = ({ onSelect }) => {
   const handleSearchChange = (query) => {
     setSearchQuery(query);
 
-    fetch(`http://localhost:8000/catalogue/search/?query=${encodeURIComponent(query)}`)
+    fetch(`https://acmandi.com/catalogue/search/?query=${encodeURIComponent(query)}`)
       .then((response) => response.json())
       .then((data) => setAutoSuggestions(data))
       .catch((error) => console.error('Error fetching auto-suggestions:', error));

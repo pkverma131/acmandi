@@ -9,7 +9,7 @@ const RecentPosts = () => {
 
   useEffect(() => {
     // Fetch the recent blog posts from the API
-    fetch('http://localhost:8000/blog/posts/')
+    fetch('https://acmandi.com/blog/posts/')
       .then((response) => response.json())
       .then((data) => {
         setRecentPosts(data);

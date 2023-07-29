@@ -33,7 +33,7 @@ const ProductListingPage = () => {
 
   useEffect(() => {
     // Fetch the product data from the API with the appropriate filter
-    let apiUrl = `http://localhost:8000/catalogue/products/?page=${currentPage}`;
+    let apiUrl = `https://acmandi.com/catalogue/products/?page=${currentPage}`;
     if (maxDefaultBillAmount) {
       apiUrl += `&max_default_bill_amount=${maxDefaultBillAmount}`;
     }
