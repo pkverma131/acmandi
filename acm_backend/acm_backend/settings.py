@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['65.2.10.71','www.acmandi.com','acmandi.com','localhost','0.0.0.0']
 CORS_ALLOWED_ORIGINS = [
-    'http://65.2.10.71',
+    'http://localhost:3000'
 ]
 
 

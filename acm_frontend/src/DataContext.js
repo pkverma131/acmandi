@@ -16,7 +16,7 @@ const DataProvider = ({ children }) => {
       setCachedData(cachedData);
     } else {
       // Fetch data from the backend API and update the cache
-      fetch('http://localhost:8000/catalogue/search/?query=${encodeURIComponent(query)}')
+      fetch('http://localhost:8000/api/catalogue/search/?query=${encodeURIComponent(query)}')
         .then((response) => response.json())
         .then((data) => {
           setCachedData(data);

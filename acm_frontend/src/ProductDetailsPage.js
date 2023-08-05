@@ -12,7 +12,7 @@ const ProductDetailsPage = () => {
 
   useEffect(() => {
     // Fetch the product details from the API using the productId from the URL
-    fetch(`https://acmandi.com/catalogue/products/${productId}/`)
+    fetch(`http://localhost:8000/api/catalogue/products/${productId}/`)
       .then((response) => response.json())
       .then((data) => setProductDetails(data))
       .catch((error) => console.error('Error fetching product details:', error));

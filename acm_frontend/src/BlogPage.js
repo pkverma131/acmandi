@@ -14,7 +14,7 @@ const BlogPage = () => {
 
   useEffect(() => {
     // Fetch the blog post using the API based on the id
-    fetch(`http://localhost:8000/blog/posts/${id}/`)
+    fetch(`http://localhost:8000/api/blog/posts/${id}/`)
       .then((response) => response.json())
       .then((data) => setBlogPost(data))
       .catch((error) => console.error('Error fetching blog post:', error));

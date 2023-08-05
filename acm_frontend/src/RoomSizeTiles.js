@@ -26,7 +26,6 @@ const RoomSizeTiles = () => {
               style={{ cursor: 'pointer' }}
             >
               <h5>{room.label}</h5> 
-              # Add tranding pointer here ?
               <p>{room.description}</p>
             </div>
           </div>

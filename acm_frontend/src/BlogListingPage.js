@@ -8,7 +8,7 @@ const BlogListingPage = () => {
 
   useEffect(() => {
     // Fetch blog posts from the API
-    fetch('https://acmandi.com/blog/posts/')
+    fetch('http://localhost:8000/api/blog/posts/')
       .then((response) => response.json())
       .then((data) => setBlogPosts(data))
       .catch((error) => console.error('Error fetching blog posts:', error));

@@ -10,7 +10,7 @@ router.register(r'products', ProductViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('search/', ProductSearchAPIView.as_view(), name='product-search'),
-    path('api/bill_amount/<int:product_id>/', BillAmountAPIView.as_view(), name='bill_amount'),
+    path('bill_amount/<int:product_id>/', BillAmountAPIView.as_view(), name='bill_amount'),
 
 
 ]

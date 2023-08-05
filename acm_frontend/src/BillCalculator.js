@@ -11,7 +11,7 @@ const BillCalculator = ({ productId }) => {
 
   useEffect(() => {
     // Fetch the product details from the API using the productId
-    fetch(`https://acmandi.com/catalogue/api/bill_amount/${productId}/`)
+    fetch(`http://localhost:8000/api/bill_amount/${productId}/`)
       .then((response) => response.json())
       .then((data) => {
         setProductDetails(data);
