@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './RecentPosts.css';
+import { API_URL } from './app.settings';
+
 
 const RecentPosts = () => {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -9,7 +11,7 @@ const RecentPosts = () => {
 
   useEffect(() => {
     // Fetch the recent blog posts from the API
-    fetch('http://localhost:8000/api/blog/posts/')
+    fetch(`${API_URL}/blog/posts/`)
       .then((response) => response.json())
       .then((data) => {
         setRecentPosts(data);

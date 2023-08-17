@@ -10,6 +10,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def get_highlights(self, obj):
         product_highlights = ProductToProductHighlight.objects.filter(product=obj)
+        print(len(product_highlights))
+        print(product_highlights)
         highlights = product_highlights.values_list('highlight__highlight', flat=True)
         return list(highlights)
 

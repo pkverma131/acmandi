@@ -5,6 +5,7 @@ import RecentPosts from './RecentPosts';
 import SocialMediaShare from './SocialMediaShare';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { API_URL } from './app.settings';
 
 const BlogPage = () => {
   const [blogPost, setBlogPost] = useState(null);
@@ -14,7 +15,7 @@ const BlogPage = () => {
 
   useEffect(() => {
     // Fetch the blog post using the API based on the id
-    fetch(`http://localhost:8000/api/blog/posts/${id}/`)
+    fetch(`${API_URL}/blog/posts/${id}/`)
       .then((response) => response.json())
       .then((data) => setBlogPost(data))
       .catch((error) => console.error('Error fetching blog post:', error));

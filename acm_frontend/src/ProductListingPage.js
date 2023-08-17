@@ -6,6 +6,7 @@ import Navigation from './Navigation';
 import Footer from './Footer';
 import './ProductListingPage.css'; // Import the CSS file with custom styles
 import ProductFilter from './ProductFilter';
+import { API_URL } from './app.settings';
 
 
 const ProductListingPage = () => {
@@ -33,7 +34,7 @@ const ProductListingPage = () => {
 
   useEffect(() => {
     // Fetch the product data from the API with the appropriate filter
-    let apiUrl = `http://localhost:8000/api/catalogue/products/?page=${currentPage}`;
+    let apiUrl = `${API_URL}/catalogue/products/?page=${currentPage}`;
     if (maxDefaultBillAmount) {
       apiUrl += `&max_default_bill_amount=${maxDefaultBillAmount}`;
     }

@@ -15,3 +15,8 @@
 11. PRODUCT DIMENSIONS (OPEN)
 12. PRODUCT DIMENSIONS OUTDOOR UNIT 
 13. AFTER SALES & SERVICES
+
+```
+sudo systemctl restart gunicorn.service 
+sudo systemctl restart nginx.service
+```

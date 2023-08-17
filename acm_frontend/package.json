@@ -1,7 +1,9 @@
 {
   "name": "acm_frontend",
   "version": "0.1.0",
-  "private": true,  
+  "private": true,
+  "proxy": "https://acmandi.com",
+  "homepage": ".",  
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
@@ -19,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
