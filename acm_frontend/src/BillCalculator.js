@@ -12,7 +12,7 @@ const BillCalculator = ({ productId }) => {
 
   useEffect(() => {
     // Fetch the product details from the API using the productId
-    fetch(`${API_URL}/catalogue/api/bill_amount/${productId}/`)
+    fetch(`${API_URL}/catalogue/bill_amount/${productId}/`)
       .then((response) => response.json())
       .then((data) => {
         setProductDetails(data);

@@ -11,7 +11,7 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        <Link to="/" className="navbar-brand">Wattcounts</Link>
+        <Link to="/" className="navbar-brand">AC Watts</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -30,7 +30,7 @@ const Navigation = () => {
               <Link to="/" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/catalogue/products" className="nav-link">Products</Link>
+              <Link to="/catalogue/products" className="nav-link">Air Conditioners</Link>
             </li>
             <li className="nav-item">
               <Link to="/blogs" className="nav-link">Blogs</Link>

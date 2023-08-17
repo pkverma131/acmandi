@@ -47,6 +47,7 @@ const ProductListingPage = () => {
       .then((data) => {
         setProducts(data.results);
         // Calculate the total number of pages based on the number of products and itemsPerPage
+        console.log(data.count);
         const pages = Math.ceil(data.count / itemsPerPage);
         setTotalPages(pages);
       })
